@@ -1,0 +1,77 @@
+If(
+    (
+        (IsEmpty([Slug-be]) = false) and
+        (IsEmpty([Title-be]) = false) and
+        (IsEmpty([Subtitle-be]) = false)
+    )
+    or
+    (
+        (IsEmpty([Slug-ru]) = false) and
+        (IsEmpty([Title-ru]) = false) and
+        (IsEmpty([Subtitle-ru]) = false)
+    )
+    or
+    (
+        (IsEmpty([Slug-en]) = false) and
+        (IsEmpty([Title-en]) = false) and
+        (IsEmpty([Subtitle-en]) = false)
+    ),
+    "",
+    "🔴 Хаця бы для адной моўнай версіі артыкула павінны быць запоўненыя палі Slug, Title i Subtitle "
+)
++
+If(
+    IsEmpty([Publication Time]) = false,
+    "",
+    "🔴 Адсутнічае час публікацыі "
+)
++
+If(
+    IsEmpty(Keywords) = false,
+    "",
+    "🔴 Адсутнічаюць ключавыя словы "
+)
++
+If(
+    IsEmpty(Cover) = false,
+    If(
+        StartsWith(Cover.[Карэктнасць запоўненых дадзеных], "🟢"),
+        "",
+        "🔴 Вокладка далучаная, але не запоўненая цалкам "
+    ),
+    "🔴 Вокладка не далучаная "
+)
++
+If(
+    Typografed,
+    "",
+    "🟠️ Тэксты пажадана прапусціць праз тыпаграф і паставіць адпаведную пазнаку (птушачку) "
+)
++
+If(
+    (
+        (
+            (IsEmpty([Slug-be]) = false) and
+            (IsEmpty([Title-be]) = false) and
+            (IsEmpty([Subtitle-be]) = false)
+        )
+        or
+        (
+            (IsEmpty([Slug-ru]) = false) and
+            (IsEmpty([Title-ru]) = false) and
+            (IsEmpty([Subtitle-ru]) = false)
+        )
+        or
+        (
+            (IsEmpty([Slug-en]) = false) and
+            (IsEmpty([Title-en]) = false) and
+            (IsEmpty([Subtitle-en]) = false)
+        )
+    ) and
+    IsEmpty([Publication Time]) = false and
+    IsEmpty(Keywords) = false and
+    IsEmpty(Cover) = false and StartsWith(Cover.[Карэктнасць запоўненых дадзеных], "🟢") and
+    Typografed,
+    "🟢 Картка запоўненая карэктна",
+    ""
+)
