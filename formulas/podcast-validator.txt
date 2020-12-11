@@ -1,0 +1,18 @@
+If(
+    IsEmpty(Article) = false,
+    "",
+    "🔴 Картка не звязаная з Артыкулам "
+)
++
+If(
+    IsEmpty([SoundCloud Link]) = false,
+    "",
+    "🔴 Адсутнічае спасылка на Soundcloud "
+)
++
+If(
+    IsEmpty(Article) = false and
+    IsEmpty([SoundCloud Link]) = false,
+    "🟢 Картка запоўненая карэктна ",
+    ""
+)
