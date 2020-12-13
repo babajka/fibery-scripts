@@ -1,0 +1,25 @@
+If(
+    IsEmpty([Name-be]) = false,
+    "",
+    "🔴 Імя на беларускай абавязковае "
+)
++
+If(
+    IsEmpty([Subtitle-be]) = false,
+    "",
+    "🔴 Подпіс (Subtitle) на беларускай абавязковы "
+)
++
+If(
+    IsEmpty([Description-be]) = false,
+    "",
+    "🔴 Апісанне (Description) на беларускай абавязковае "
+)
++
+If(
+    IsEmpty([Name-be]) = false and
+    IsEmpty([Subtitle-be]) = false and
+    IsEmpty([Description-be]) = false,
+    "🟢 Картка запоўненая карэктна ",
+    ""
+)
