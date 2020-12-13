@@ -11,8 +11,21 @@ If(
 )
 +
 If(
+    Files.Count() > 0,
+    If(
+        Find(Files.Join(Name,""), ".mp3") > 0,
+        "",
+        "🔴 Адсутнічае файл у фармаце mp3 "
+
+    ),
+    "🔴 Не загружаны аўдыёфайл "
+)
++
+If(
     IsEmpty(Article) = false and
-    IsEmpty([SoundCloud Link]) = false,
+    IsEmpty([SoundCloud Link]) = false and
+    Files.Count() > 0 and
+    Find(Files.Join(Name,""), ".mp3") > 0,
     "🟢 Картка запоўненая карэктна ",
     ""
 )
