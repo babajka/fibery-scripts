@@ -7,26 +7,31 @@ If(
 If(
     Find(Files.Join(Name,""), "horizontal") > 0,
     "",
-    "🔴 Не знайшлі вокладку, якая змяшчае horizontal у назве файла "
+    "🔴 Не знайшлі вокладку з ключавым словам horizontal ў назве файла "
 )
 +
 If(
     Find(Files.Join(Name,""), "vertical") > 0,
     "",
-    "🔴 Не знайшлі вокладку, якая змяшчае vertical у назве файла "
+    "🔴 Не знайшлі вокладку з ключавым словам vertical ў назве файла "
 )
 +
 If(
-    Find(Files.Join(Name,""), "page") > 0,
-    "",
-    "🔴 Не знайшлі вокладку, якая змяшчае page у назве файла "
+    IsEmpty(Article) = false,
+    If(
+        IsEmpty(Article.Video) = false or IsEmpty(Article.Podcast) = false or Find(Files.Join(Name,""), "page") > 0,
+        "",
+        "🔴 Картка звязаная з тэкставым Артыкулам: вокладка з ключавым словам page у назве файла абавязковая"
+    ),
+    "🔴 Картка не звязаная з Артыкулам "
 )
 +
 If(
     MatchRegex(Color,"^#[0-9a-fA-F]{6}$") and
     Find(Files.Join(Name,""), "horizontal") > 0 and
     Find(Files.Join(Name,""), "vertical") > 0 and
-    Find(Files.Join(Name,""), "page") > 0,
+    IsEmpty(Article) = false and
+    (IsEmpty(Article.Video) = false or IsEmpty(Article.Podcast) = false or Find(Files.Join(Name,""), "page") > 0),
     "🟢 Картка запоўненая карэктна",
     ""
 )
