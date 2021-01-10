@@ -5,14 +5,14 @@ If(
 )
 +
 If(
-    MatchRegex([Youtube Link], "youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}"),
+    MatchRegex([Youtube Link], ".*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]{11}).*"),
     "",
     "🔴 Кепскі фармат YouTube-спасылкі, прыклад валіднай: youtube.com/watch?v=2Hi2u98VKxc "
 )
 +
 If(
     IsEmpty(Article) = false and
-    MatchRegex([Youtube Link], "youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}"),
+    MatchRegex([Youtube Link], ".*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#&?]{11}).*"),
     "🟢 Картка запоўненая карэктна ",
     ""
 )
