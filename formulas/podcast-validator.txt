@@ -5,9 +5,9 @@ If(
 )
 +
 If(
-    IsEmpty([SoundCloud Link]) = false,
+    IsEmpty([Yandex Music Track ID]) = false,
     "",
-    "🔴 Адсутнічае спасылка на Soundcloud "
+    "🟠️ Адсутнічае ID трэка на Яндэкс.Музыцы (дадаецца пасля публікацыі) "
 )
 +
 If(
@@ -23,7 +23,7 @@ If(
 +
 If(
     IsEmpty(Article) = false and
-    IsEmpty([SoundCloud Link]) = false and
+    IsEmpty([Yandex Music Track ID]) = false and
     Files.Count() > 0 and
     Find(Files.Join(Name,""), ".mp3") > 0,
     "🟢 Картка запоўненая карэктна ",
