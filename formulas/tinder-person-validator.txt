@@ -11,8 +11,20 @@ If(
 )
 +
 If(
+    Files.Count() = 1,
+    If(
+        Find(Files.Join(Name,""), ".jpg") > 0 or Find(Files.Join(Name,""), ".png") > 0,
+        "",
+        "🔴 Файл павінен быць у фармаце jpg альбо png "
+    ),
+    "🔴 Павінен быць загружаны адзіны здымак асобы "
+)
++
+If(
     (IsEmpty(Person) = false or IsEmpty(Personality) = false) and
-    IsEmpty([Tinder Game]) = false,
+    IsEmpty([Tinder Game]) = false and
+    Files.Count() = 1 and
+    (Find(Files.Join(Name,""), ".jpg") > 0 or Find(Files.Join(Name,""), ".png") > 0),
     "🟢 Картка запоўненая карэктна ",
     ""
 )
