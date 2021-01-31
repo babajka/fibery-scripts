@@ -11,6 +11,8 @@ const AUTH_TOKEN = '';
 
 const ROLES_ALLOWED = ['Editor', 'Developer'];
 
+const GAME_NAME = ''; // TODO: Choose between 'fortune' and 'tinder';
+
 const thisArticle = args.currentEntities[0];
 const user = args.currentUser;
 
@@ -39,7 +41,7 @@ const timeNow = () => {
 
 const logPrefix = () => `[${user['Name']}](${utils.getEntityUrl('fibery/user', user['Public Id'])}), ${timeNow()}`;
 
-await http.postAsync(`${API_URL}/games/fortune/fibery/import`, {
+await http.postAsync(`${API_URL}/games/${GAME_NAME}/fibery/import`, {
     body: {
         'fiberyPublicId': thisArticle['Public Id']
     },

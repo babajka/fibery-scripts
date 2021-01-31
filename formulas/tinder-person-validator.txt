@@ -1,0 +1,18 @@
+If(
+    IsEmpty(Person) = false or IsEmpty(Personality) = false,
+    "",
+    "🔴 Трэба альбо ўказаць імя, альбо далучыць асобу "
+)
++
+If(
+    IsEmpty([Tinder Game]) = false,
+    "",
+    "🔴 Tinder-асоба павінна быць далучана да Tinder-гульні "
+)
++
+If(
+    (IsEmpty(Person) = false or IsEmpty(Personality) = false) and
+    IsEmpty([Tinder Game]) = false,
+    "🟢 Картка запоўненая карэктна ",
+    ""
+)
