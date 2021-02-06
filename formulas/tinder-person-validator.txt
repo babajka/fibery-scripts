@@ -5,6 +5,16 @@ If(
 )
 +
 If(
+    IsEmpty(Personality),
+    "",
+    If(
+        StartsWith(Personality.[Карэктнасць запоўненых дадзеных], "🟢"),
+        "",
+        "🔴 Асоба далучаная, але не запоўненая карэктна. Магчыма, не трэба далучаць асобу наогул "
+    )
+)
++
+If(
     IsEmpty([Tinder Game]) = false,
     "",
     "🔴 Tinder-асоба павінна быць далучана да Tinder-гульні "
@@ -22,6 +32,7 @@ If(
 +
 If(
     (IsEmpty(Person) = false or IsEmpty(Personality) = false) and
+    (IsEmpty(Personality) or StartsWith(Personality.[Карэктнасць запоўненых дадзеных], "🟢")) and
     IsEmpty([Tinder Game]) = false and
     Files.Count() = 1 and
     (Find(Files.Join(Name,""), ".jpg") > 0 or Find(Files.Join(Name,""), ".png") > 0),
