@@ -1,5 +1,5 @@
 If(
-    IsEmpty(Person) = false or IsEmpty(Personality) = false,
+    IsEmpty([Tinder Nickname]) = false or IsEmpty(Personality) = false,
     "",
     "🔴 Трэба альбо ўказаць імя, альбо далучыць асобу "
 )
@@ -31,7 +31,7 @@ If(
 )
 +
 If(
-    (IsEmpty(Person) = false or IsEmpty(Personality) = false) and
+    (IsEmpty([Tinder Nickname]) = false or IsEmpty(Personality) = false) and
     (IsEmpty(Personality) or StartsWith(Personality.[Карэктнасць запоўненых дадзеных], "🟢")) and
     IsEmpty([Tinder Game]) = false and
     Files.Count() = 1 and
