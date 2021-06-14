@@ -9,14 +9,20 @@ const LOG_FIELD = 'Publication Log DEV'
 // TODO: Add auth token below to act as bot user.
 const AUTH_TOKEN = '';
 
-const ROLES_ALLOWED = ['Editor', 'Developer'];
+// Keep ROLES_ALLOWED in sync with Role's Identifiers.
+const ROLES_ALLOWED = ['editor', 'developer'];
 
 const thisArticle = args.currentEntities[0];
 const user = args.currentUser;
 
 const userAllowed = async () => {
     const u = await fibery.getEntityById('fibery/user', user['Id'], ['Roles']);
-    return u['Roles'].some(role => ROLES_ALLOWED.some(roleAllowed => role['Name'].includes(roleAllowed)));
+    const uRoles = await Promise.all(
+      u['Roles'].map(
+        ({ Id }) => fibery.getEntityById('Projects/Role', Id, ['Identifier'])
+      )
+    ).then(roles => roles.map(({ Identifier }) => Identifier))
+    return ROLES_ALLOWED.some(roleAllowed => uRoles.includes(roleAllowed));
 }
 
 if (!await userAllowed()) {
