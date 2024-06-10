@@ -5,6 +5,18 @@ If(
 )
 +
 If(
+    IsEmpty([Apple Podcasts Track ID]) = false,
+    "",
+    "🟠️ Адсутнічае ID трэка на Apple Podcasts (дадаецца пасля публікацыі) "
+)
++
+If(
+    IsEmpty([Spotify Track ID]) = false,
+    "",
+    "🟠️ Адсутнічае ID трэка на Spotify (дадаецца пасля публікацыі) "
+)
++
+If(
     IsEmpty([Yandex Music Track ID]) = false,
     "",
     "🟠️ Адсутнічае ID трэка на Яндэкс.Музыцы (дадаецца пасля публікацыі) "
@@ -22,6 +34,8 @@ If(
 +
 If(
     IsEmpty(Article) = false and
+    IsEmpty([Apple Podcasts Track ID]) = false and
+    IsEmpty([Spotify Track ID]) = false and
     IsEmpty([Yandex Music Track ID]) = false and
     Files.Count() > 0 and
     Find(Files.Join(Name,""), ".mp3") > 0,
